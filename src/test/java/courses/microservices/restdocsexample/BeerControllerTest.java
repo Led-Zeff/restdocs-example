@@ -35,7 +35,7 @@ import courses.microservices.restdocsexample.web.controller.BeerController;
 import courses.microservices.restdocsexample.web.model.BeerDTO;
 
 @ExtendWith(RestDocumentationExtension.class)
-@AutoConfigureRestDocs
+@AutoConfigureRestDocs(uriScheme = "https", uriHost = "google.com", uriPort = 80)
 @WebMvcTest(BeerController.class)
 @ComponentScan(basePackages = "courses.microservices.restdocsexample.web.mappers")
 public class BeerControllerTest {
@@ -58,7 +58,7 @@ public class BeerControllerTest {
       .param("isCold", "yes")
       .accept(MediaType.APPLICATION_JSON))
     .andExpect(MockMvcResultMatchers.status().isOk())
-    .andDo(MockMvcRestDocumentation.document("v1/beers", RequestDocumentation.pathParameters(
+    .andDo(MockMvcRestDocumentation.document("v1/beers-get", RequestDocumentation.pathParameters(
       RequestDocumentation.parameterWithName("beerId").description("UUID of desired beer to get.")
     ), RequestDocumentation.requestParameters(
       RequestDocumentation.parameterWithName("isCold").description("If you want your beer to be dead cold")
@@ -80,7 +80,7 @@ public class BeerControllerTest {
 
     mockMvc.perform(RestDocumentationRequestBuilders.post("/api/v1/beers/").contentType(MediaType.APPLICATION_JSON).content(beerDtoJson))
         .andExpect(MockMvcResultMatchers.status().isCreated())
-        .andDo(MockMvcRestDocumentation.document("v1/beers", PayloadDocumentation.requestFields(
+        .andDo(MockMvcRestDocumentation.document("v1/beers-new", PayloadDocumentation.requestFields(
           fields.withPath("name").description("Beer name"),
           fields.withPath("style").description("Beer style"),
           fields.withPath("upc").description("Beer UPC"),
@@ -105,6 +105,7 @@ public class BeerControllerTest {
         .style(BeerStyle.API)
         .price(new BigDecimal("123.23"))
         .upc(4342434L)
+        .quantityOnHand(500)
         .build();
   }
   

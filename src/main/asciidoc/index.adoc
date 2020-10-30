@@ -1,1 +1,38 @@
 = Brewery Order Service Docs
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+
+Sample application demostrating how to use Spring REST Docs with JUnit 5.
+
+`BeerOrderControllerTest` makes a call to a very simple service and produces three documentation snippets.
+
+HTTP request:
+
+include::{snippets}/v1/beers-get/http-request.adoc[]
+
+HTTP response:
+
+include::{snippets}/v1/beers-get/http-response.adoc[]
+
+Response body:
+
+include::{snippets}/v1/beers-get/response-body.adoc[]
+
+Response fields:
+
+include::{snippets}/v1/beers-get/response-fields.adoc[]
+
+New beer
+
+HTTP request:
+
+include::{snippets}/v1/beers-new/http-request.adoc[]
+
+HTTP response:
+
+include::{snippets}/v1/beers-new/http-response.adoc[]
+
+Request fields:
+
+include::{snippets}/v1/beers-new/request-fields.adoc[]

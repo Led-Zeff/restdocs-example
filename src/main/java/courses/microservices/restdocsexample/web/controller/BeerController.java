@@ -37,9 +37,9 @@ public class BeerController {
 
   @PostMapping
   @ResponseStatus(code = HttpStatus.CREATED)
-  public void saveNewBeer(@RequestBody @Valid BeerDTO beerDTO) {
+  public BeerDTO saveNewBeer(@RequestBody @Valid BeerDTO beerDTO) {
     Beer beer = beerMapper.dtoToBeer(beerDTO);
-    beerRepository.save(beer);
+    return beerMapper.beerToDto(beerRepository.save(beer));
   }
 
   @PutMapping("/{beerId}")
