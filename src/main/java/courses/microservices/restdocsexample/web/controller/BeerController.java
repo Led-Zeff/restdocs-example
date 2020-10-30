@@ -45,7 +45,7 @@ public class BeerController {
   @PutMapping("/{beerId}")
   @ResponseStatus(code = HttpStatus.NO_CONTENT)
   public void updateBeer(@RequestBody @Valid BeerDTO beerDTO, @PathVariable UUID beerId) {
-    Beer beer = beerRepository.findById(beerId).orElseThrow();
+    Beer beer = beerRepository.findById(beerId).orElse(new Beer());
     beer.setName(beerDTO.getName());
     beer.setStyle(beerDTO.getStyle().name());
     beer.setPrice(beerDTO.getPrice());

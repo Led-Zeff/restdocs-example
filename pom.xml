@@ -107,7 +107,7 @@
 						<id>generate-docs</id>
 						<phase>prepare-package</phase>
 						<goals>
-							<goal>prepare-asciidocs</goal>
+							<goal>process-asciidoc</goal>
 						</goals>
 						<configuration>
 							<backend>html</backend>
