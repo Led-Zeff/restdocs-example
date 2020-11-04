@@ -1,6 +1,7 @@
 package courses.microservices.restdocsexample.web.model;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.OffsetDateTime;
 
 import javax.validation.constraints.NotBlank;
@@ -11,6 +12,8 @@ import javax.validation.constraints.Size;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonFormat.Shape;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import courses.microservices.restdocsexample.domain.BeerStyle;
 import lombok.AllArgsConstructor;
@@ -47,5 +50,9 @@ public class BeerDTO {
   @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ssZ", shape = Shape.STRING)
   private OffsetDateTime createdDate;
   private OffsetDateTime lastModifiedDate;
+
+  @JsonSerialize(using = LocalDateSerializer.class)
+  @JsonDeserialize(using = LocalDateDeserializer.class)
+  private LocalDate localDate;
 
 }

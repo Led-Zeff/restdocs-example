@@ -1,6 +1,7 @@
 package courses.microservices.restdocsexample.web.model;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
 
@@ -16,6 +17,7 @@ public class BaseTest {
       .quantityOnHand(233)
       .createdDate(OffsetDateTime.of(2020, 11, 2, 10, 20, 46, 3453, ZoneOffset.UTC))
       .lastModifiedDate(OffsetDateTime.of(2020, 11, 3, 18, 5, 47, 3453, ZoneOffset.UTC))
+      .localDate(LocalDate.now())
       .build();
   } 
 }

@@ -26,7 +26,7 @@ public class BerrDTOTest extends BaseTest {
 
   @Test
   void deserializeDto() throws JsonMappingException, JsonProcessingException {
-    String json = "{\"name\":\"Beer\",\"style\":\"LAGER\",\"upc\":43557646897,\"price\":233.43,\"quantityOnHand\":233}";
+    String json = "{\"name\":\"Beer\",\"style\":\"LAGER\",\"upc\":43557646897,\"price\":233.43,\"quantityOnHand\":233, \"localDate\":\"20200304\"}";
     BeerDTO dto = objectMapper.readValue(json, BeerDTO.class);
     log.info(dto);
   }
